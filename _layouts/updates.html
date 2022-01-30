@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+{%- for update in site.posts -%}
+    
+    
+    <div class="card">
+        <div class="card-header">{{ update.date }}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ update.title }}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+{%- endfor -%}
