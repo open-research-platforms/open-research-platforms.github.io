@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<h1 class="display-1 d-flex">
+  <span class="flex-grow-1">{{ page.name }}</span>
+  {% if page.logo %}
+    <img src="/assets/logos/{{ page.logo }}" alt="Logo for {{ page.name }}" width="96" height="96" class="d-inline-block align-text-top">                     
+  {% endif %}
+</h1>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+      <div class="col col-8">
+        <p class="lead">{{ page.description }}</p>
+
+        {{ content }}
+      </div>
+      <div class="col col-4">
+        {% if page.links %}
+          {%- for link in page.links -%}
+            <a href="{{ link.url }}" class="card-link">{{ link.label }}</a>
+          {% endfor %}
+        {% endif %}
+        
+        <ul class="list-group mt-3">
+          {%- for criteria in page.criteria -%}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">{{ criteria.label }}</div>
+                <small class="text-muted">{{ criteria.notes | markdownify }}</small>
+              </div>
+              <small class="badge me-3 bg-{{ criteria.rating | downcase }} rounded-pill">{{ criteria.rating }}</small>
+            </li>               
+          {%- endfor -%}  
+        </ul>
+      </div>
+    </div>
+  </div>

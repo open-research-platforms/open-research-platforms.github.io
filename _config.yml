@@ -1,1 +1,25 @@
-theme: jekyll-theme-cayman
+plugins:
+  - jekyll-remote-theme
+
+remote_theme: jonaharagon/jekyll-bootstrap-theme
+
+title: 🧩 Open Research Platforms
+
+author:
+  name: 'Casey Gollan'
+  email: 'hello@caseyagollan.com'
+
+description: >- # this means to ignore newlines until "baseurl:"
+
+collections:
+  platforms:
+    output: true
+    permalink: /:name
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "platforms" # a collection in your site, in plural form
+    values:
+      layout: platform
