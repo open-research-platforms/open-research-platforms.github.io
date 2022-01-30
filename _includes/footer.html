@@ -13,14 +13,11 @@
             {%- endif %}
           </ul>
           {%- endif %}
-          <p class="contribute">
-            <a class="btn btn-blue text-white" href="https://github.com/open-research-platforms">
+          <p>
+            <a class="btn btn-blue text-white" href="{{site.github.repository_url}}/blob/main/{{page.path}}">
               <i class="bi bi-github"></i>
-              <span>Contribute on Github</span>
+              <span>Edit this page on Github</span>
             </a>
-          </p>
-
-          <p class="feed-subscribe">
             <a class="btn btn-orange text-white" href="{{ 'feed.xml' | relative_url }}">
               <i class="bi bi-rss-fill"></i>
               <span>Subscribe</span>
