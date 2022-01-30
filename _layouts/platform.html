@@ -8,6 +8,13 @@ layout: default
     <img src="/assets/logos/{{ page.logo }}" alt="Logo for {{ page.name }}" width="96" height="96" class="d-inline-block align-text-top">                     
   {% endif %}
 </h1>
+<h2>
+  {% if page.rating %}
+    <span class="badge bg-{{ page.rating | downcase }}{% if page.rating == "Warning" %} text-dark{% endif %}">{{ page.rating }}</span>
+  {% else %}
+    <span class="badge bg-secondary }}">Unknown</span>
+  {% endif %}
+</h2>
 
 <hr>
 
