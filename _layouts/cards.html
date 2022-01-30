@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+{{content}}
+
+<div class="row row-cols-1 row-cols-md-2 g-4" data-masonry='{"percentPosition": true }'>
+  {% for platform in site.platforms %}
+    <div class="col">
+      <div class="card border mb-3">
+        <div class="card-body">
+            <h5>
+              <div class="d-flex">
+                <a class="text-decoration-none flex-grow-1" href="{{ platform.url }}">
+                  {% if platform.logo %}
+                    <img src="/assets/logos/{{ platform.logo }}" alt="Logo for {{ platform.name }}" width="24" height="24" class="d-inline-block align-text-top">                     
+                  {% endif %}
+                  {{ platform.name }}
+                </a>
+                {% if platform.rating %}
+                  <span class="badge bg-{{ platform.rating | downcase }}{% if platform.rating == "Warning" %} text-dark{% endif %}">{{ platform.rating }}</span>
+                {% else %}
+                <span class="badge bg-secondary }}">Unknown</span>
+              {% endif %}
+            </div>
+          </h5>
+          <p class="card-text">{{ platform.description | markdownify }}</p>
+        </div>
+        {% if platform.links %}
+          <small class="card-header">
+            {%- for link in platform.links -%}
+              <a href="{{ link.url }}" class="card-link link-secondary">{{ link.label }}</a>
+            {% endfor %}
+          </small>
+        {% endif %}
+        {% if platform.criteria %}
+          <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
+            {%- for criteria in platform.criteria -%}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{ platform.name }}{{ criteria.label }}">
+                  <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ platform.name }}{{ criteria.label }}" aria-expanded="false" aria-controls="flush-collapse{{ platform.name }}{{ criteria.label }}">
+                    <small class="flex-grow-1">{{ criteria.label }}</small>
+                    <small class="badge me-3 bg-{{ criteria.rating | downcase }} rounded-pill">{{ criteria.rating }}</small>
+                  </button>
+                </h2>
+                <div id="flush-collapse{{ platform.name }}{{ criteria.label }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ platform.name }}{{ criteria.label }}" data-bs-parent="#accordion{{ platform.name }}">
+                  <div class="accordion-body"><small class="text-muted">{{ criteria.notes | markdownify }}</small></div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>  
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
