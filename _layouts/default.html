@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body class="d-flex flex-column vw-100 vh-100">
+
+    {%- include header.html -%}
+
+    <main class="page-content py-5 flex-shrink-0" aria-label="Content">
+      <div class="container">
+      {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="{{ '/assets/js/bootstrap.bundle.min.js' | relative_url }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+    <script type="text/javascript">
+      // filter items on button click
+      $('.btn-group').on( 'click', 'button', function() {
+        var filterValue = $(this).attr('data-filter');
+        $('#masonry').isotope({ filter: filterValue });
+      });
+
+      $('.accordion-collapse').on('shown.bs.collapse', function () {
+        $('#masonry').isotope('layout');
+      })
+      $('.accordion-collapse').on('hidden.bs.collapse', function () {
+        $('#masonry').isotope('layout');
+      })
+    </script>
+</body>
+
+</html>
