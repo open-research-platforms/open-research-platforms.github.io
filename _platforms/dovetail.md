@@ -14,7 +14,7 @@ criteria:
   - label: Zapier
     rating: Success
     notes: Includes xyz [Zapier](https://zapier.com/apps/dovetail/integrations) [Dovetail](https://dovetailapp.com/help/connect-apps-to-dovetail-with-zapier/)
-  - label: API
+  - label: APIs
     rating: Danger
     notes: Includes xyz
 ---
