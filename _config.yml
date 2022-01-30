@@ -11,10 +11,12 @@ author:
 
 description: >- # this means to ignore newlines until "baseurl:"
 
+permalink: pretty
+
 collections:
   platforms:
     output: true
-    permalink: /:name
+    permalink: /:name/
 
 defaults:
   -
@@ -23,3 +25,12 @@ defaults:
       type: "platforms" # a collection in your site, in plural form
     values:
       layout: platform
+
+bootstrap:
+  social_links:
+    twitter: 'https://twitter.com/@caseyg'
+    linkedin: 'https://linkedin.com/in/casey-gollan'
+  header_pages:
+   - index.md
+   - criteria.md
+   - why.md
