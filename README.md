@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Open Research Platforms
 
 You can use the [editor on GitHub](https://github.com/open-research-platforms/open-research-platforms.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
