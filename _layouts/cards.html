@@ -3,25 +3,25 @@ layout: default
 ---
 
 {{content}}
-
+<!-- hide purpose built filters, for now
 <div class="btn-group" role="group" aria-label="Basic outlined example">  
   <button type="button" class="btn btn-outline-primary" data-filter="*">show all</button>
   <button type="button" class="btn btn-outline-primary" data-filter=".purpose-built">purpose-built</button>
 </div>
-
+-->
 <div class="btn-group" role="group" aria-label="Basic outlined example">  
-  <button type="button" class="btn btn-outline-primary" data-filter="*">show all</button>
-  <button type="button" class="btn btn-outline-success" data-filter=".success">Open</button>
-  <button type="button" class="btn btn-outline-warning" data-filter=".warning">Partial</button>
-  <button type="button" class="btn btn-outline-danger" data-filter=".danger">Closed</button>
-  <button type="button" class="btn btn-outline-secondary" data-filter=".unknown">Unknown</button>
+  <button type="button" class="btn btn-light text-primary" data-filter="*">All</button>
+  <button type="button" class="btn btn-light text-secondary" data-filter=".success">Open</button>
+  <button type="button" class="btn btn-light text-warning" data-filter=".warning">Partial</button>
+  <button type="button" class="btn btn-light text-danger" data-filter=".danger">Closed</button>
+  <button type="button" class="btn btn-light text-secondary" data-filter=".unknown">Unknown</button>
 </div>
 
 <hr>
 <div class="row row-cols-1 row-cols-md-2 g-4" id="masonry" data-isotope='{ "itemSelector": ".col", "layoutMode": "masonry" }'>
   {% for platform in site.platforms %}
     <div class="col {% if platform.rating %}{{ platform.rating | downcase }}{% else %}unknown{% endif %}">
-      <div class="card border mb-3">
+      <div class="card mb-2">
         <div class="card-body">
             <h5>
               <div class="d-flex">

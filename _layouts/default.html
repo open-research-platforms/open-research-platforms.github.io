@@ -24,6 +24,8 @@
       $('.btn-group').on( 'click', 'button', function() {
         var filterValue = $(this).attr('data-filter');
         $('#masonry').isotope({ filter: filterValue });
+        $('.btn-group').find('.active').removeClass('active');
+        $( this ).addClass('active');
       });
 
       $('.accordion-collapse').on('shown.bs.collapse', function () {
