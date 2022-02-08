@@ -32,14 +32,22 @@ layout: default
                   {{ platform.name }}
                 </a>
                 {% if platform.rating %}
-                  <span class="badge bg-{{ platform.rating | downcase }}{% if platform.rating == "Warning" %} text-dark{% endif %}">{{ platform.rating }}</span>
+                  <span class="badge bg-{{ platform.rating | downcase }}{% if platform.rating == "Warning" %} text-dark{% endif %}">{% if platform.rating == "Success" %}Open{% else %}{{ platform.rating }}{% endif %}</span>
                 {% else %}
                 <span class="badge bg-secondary }}">Unknown</span>
               {% endif %}
             </div>
           </h5>
           <p class="card-text">{{ platform.description | markdownify }}</p>
+          {% if platform.criteria %}
+            <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
+              {%- for criteria in platform.criteria -%}                
+                <small class="badge me-3 bg-{% if criteria.rating %}{{ criteria.rating | downcase }}{% else %}light text-secondary{% endif %} rounded-pill">{{ criteria.label }}</small>
+              {%- endfor -%}
+            </div>  
+          {% endif %}
         </div>
+        <!--
         {% if platform.links %}
           <small class="card-header">
             {%- for link in platform.links -%}
@@ -47,23 +55,7 @@ layout: default
             {% endfor %}
           </small>
         {% endif %}
-        {% if platform.criteria %}
-          <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
-            {%- for criteria in platform.criteria -%}
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-heading{{ platform.name }}{{ criteria.label }}">
-                  <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ platform.name }}{{ criteria.label }}" aria-expanded="false" aria-controls="flush-collapse{{ platform.name }}{{ criteria.label }}">
-                    <small class="flex-grow-1">{{ criteria.label }}</small>
-                    <small class="badge me-3 bg-{{ criteria.rating | downcase }} rounded-pill">{{ criteria.rating }}</small>
-                  </button>
-                </h2>
-                <div id="flush-collapse{{ platform.name }}{{ criteria.label }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ platform.name }}{{ criteria.label }}" data-bs-parent="#accordion{{ platform.name }}">
-                  <div class="accordion-body"><small class="text-muted">{{ criteria.notes | markdownify }}</small></div>
-                </div>
-              </div>
-            {%- endfor -%}
-          </div>  
-        {% endif %}
+        -->
       </div>
     </div>
   {% endfor %}

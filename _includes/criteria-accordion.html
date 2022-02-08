@@ -1,0 +1,22 @@
+{% if platform.criteria %}
+    <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
+    {%- for criteria in platform.criteria -%}
+        <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-heading{{ platform.name }}{{ criteria.label | slugify }}">
+            <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ platform.name }}{{ criteria.label | slugify }}" aria-expanded="false" aria-controls="flush-collapse{{ platform.name }}{{ criteria.label | slugify }}">
+            <small class="flex-grow-1">{{ criteria.label }}</small>
+            {% if criteria.rating %}
+                <small class="badge me-3 bg-{{ criteria.rating | downcase }} rounded-pill">{{ criteria.rating }}</small>
+            {% else %}
+                <small class="badge me-3 bg-secondary rounded-pill">Unknown</small>
+            {% endif %}
+
+            </button>
+        </h2>
+        <div id="flush-collapse{{ platform.name }}{{ criteria.label | slugify }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ platform.name }}{{ criteria.label | slugify }}" data-bs-parent="#accordion{{ platform.name }}">
+            <div class="accordion-body"><small class="text-muted">{{ criteria.notes | markdownify }}</small></div>
+        </div>
+        </div>
+    {%- endfor -%}
+    </div>  
+{% endif %}

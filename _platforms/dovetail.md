@@ -11,12 +11,15 @@ links:
 description: "Dovetail is cloud-based user research and customer feedback software for the analysis, organization, collaboration and storage of data."
 rating: Warning
 criteria:
-  - label: Zapier
-    rating: Success
-    notes: Includes xyz [Zapier](https://zapier.com/apps/dovetail/integrations) [Dovetail](https://dovetailapp.com/help/connect-apps-to-dovetail-with-zapier/)
+  - label: Data Portability
+    rating: Warning
+    notes: Includes xyz
   - label: APIs
     rating: Danger
     notes: Includes xyz
+  - label: Integrations
+    rating: Success
+    notes: Includes xyz [Zapier](https://zapier.com/apps/dovetail/integrations) [Dovetail](https://dovetailapp.com/help/connect-apps-to-dovetail-with-zapier/)
 ---
 
 ## Zapier
