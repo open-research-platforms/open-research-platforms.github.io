@@ -2,25 +2,43 @@
     <data class="u-url" href="{{ "/" | relative_url }}"></data>
     <div class="container py-3">
       <div class="row">
-        <div class="col">
-          {%- if site.author %}
-          <ul class="contact-list list-unstyled">
-            {% if site.author.name -%}
-              <li class="p-name">{{ site.title }} is maintained by {{ site.author.name | escape }}</li>
-            {% endif -%}
-            {% if site.author.email -%}
-              <li><a class="u-email" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
-            {%- endif %}
-          </ul>
-          {%- endif %}
+        <div class="col text-center">
           <p>
             <a class="btn btn-blue text-white" href="{{site.github.repository_url}}/blob/main/{{page.path}}?plain=1">
-              <i class="bi bi-github"></i>
+              <i class="bi bi-pencil-square"></i>
               <span>Edit this page on Github</span>
             </a>
-            <a class="btn btn-orange text-white" href="{{ 'feed.xml' | relative_url }}">
+            <a class="btn btn-outline btn-outline-red" href="{{site.github.repository_url}}/blob/main/{{page.path}}?plain=1">
+              <i class="bi bi-flag-fill"></i>
+              <span>Report an issue on Github</span>
+            </a>
+          </p>
+
+          <hr class="my-5">
+
+          <ul class="contact-list list-unstyled">
+            {% if site.author.name -%}
+              <li class="p-name"><strong>{{ site.title }}</strong> is maintained by:
+                <ul class="list-inline my-3">
+                  {%- for contributor in site.github.contributors -%}
+                  <li class="list-inline-item"><a href="{{contributor.html_url}}"><img class="img-thumbnail rounded-circle" height="50px" width="50px" src="{{contributor.avatar_url}}" alt="@{{contributor.name}}"></a></li>                 
+                  {%- endfor -%}
+                  <li class="list-inline-item"><a href="/contributing"><img class="img-thumbnail rounded-circle" height="50px" width="50px" src="/assets/waving-hand.png" alt="YOU"></a></li>                 
+                </ul>
+              </li>
+            {% endif -%}
+          </ul>
+
+          <hr class="my-5">
+
+          <p>
+            <a class="btn btn-outline btn-outline-gray" href="{{ 'feed.xml' | relative_url }}">
+              <i class="bi bi-envelope-fill"></i>
+              <span>Subscribe to Newsletter</span>
+            </a>
+            <a class="btn btn-outline btn-outline-gray" href="{{ 'feed.xml' | relative_url }}">
               <i class="bi bi-rss-fill"></i>
-              <span>Subscribe</span>
+              <span>Subscribe to Feed</span>
             </a>
           </p>
           <p>{{ site.description | escape }}</p>
