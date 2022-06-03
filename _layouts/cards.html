@@ -18,7 +18,7 @@ layout: default
 </div>
 
 <hr>
-<div class="row row-cols-1 row-cols-md-2 g-4" id="masonry" data-isotope='{ "itemSelector": ".col", "layoutMode": "masonry" }'>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="masonry" data-isotope='{ "itemSelector": ".col", "layoutMode": "masonry" }'>
   {% for platform in site.platforms %}
     <div class="col {% if platform.rating %}{{ platform.rating | downcase }}{% else %}unknown{% endif %}">
       <div class="card mb-2">
