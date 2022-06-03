@@ -8,3 +8,12 @@ links:
   - label: Crunchbase
     url: https://www.crunchbase.com/organization/aurelius-9006
 ---
+
+## Integrations
+
+https://intercom.help/aurelius/en/collections/2098560-integrations-with-aurelius
+
+https://intercom.help/aurelius/en/articles/3619878-connect-aurelius-to-hundreds-of-other-apps-with-zapier
+
+
+> Our Zapier integration is available to everyone in Pro and Premium plans.
