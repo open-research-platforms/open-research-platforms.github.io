@@ -1,5 +1,6 @@
 ---
-name: Platform
+published: false
+name: Confluence
 logo: logo.png
 description: Tagline goes here.
 rating: [Success, Warning, Danger]

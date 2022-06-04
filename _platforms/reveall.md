@@ -1,4 +1,5 @@
 ---
+published: false
 name: Reveall
 logo: reveall.webp
 links:

@@ -1,4 +1,5 @@
 ---
+published: false
 name: Platform
 logo: logo.png
 description: Tagline goes here.

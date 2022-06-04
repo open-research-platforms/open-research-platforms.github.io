@@ -1,4 +1,5 @@
 ---
+published: false
 name: Gleanly
 logo: gleanly.png
 links:
