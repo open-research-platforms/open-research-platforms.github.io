@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+{{content}}
+
+<div class="container-fluid">
+  <table class="table table-striped">
+    <tr>
+      <th>Platform</th>
+      <th>Rating</th>
+      <th>Evaluation</th>
+      <th>Description</th>
+    </tr>
+  {% for platform in site.platforms %}
+    <tr>
+      <td>
+        <a class="text-decoration-none flex-grow-1 text" href="{{ platform.url }}">
+          {% if platform.logo %}
+            <img src="/assets/logos/{{ platform.logo }}" alt="Logo for {{ platform.name }}" width="24" height="24" class="d-inline-block align-text-top">                     
+          {% endif %}
+          {{ platform.name }}
+        </a>
+      </td>
+      <td>
+        {% if platform.rating %}
+          <span class="badge bg-{{ platform.rating | downcase }}{% if platform.rating == "Warning" %} text-dark{% endif %}">{% if platform.rating == "Success" %}Open{% else %}{{ platform.rating }}{% endif %}</span>
+        {% else %}
+          <span class="badge bg-secondary }}">Unknown</span>
+        {% endif %}
+      </td>
+      <td>
+        {% if platform.criteria %}
+          <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
+            {%- for criteria in platform.criteria -%}                
+              <small class="badge me-3 bg-{% if criteria.rating %}{{ criteria.rating | downcase }}{% else %}light text-secondary{% endif %} rounded-pill">{{ criteria.label }}</small>
+            {%- endfor -%}
+          </div>  
+        {% endif %}
+      </td>
+      <td>
+        {{ platform.description | markdownify }}
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+
+</div>

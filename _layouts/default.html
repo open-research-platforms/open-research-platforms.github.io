@@ -2,13 +2,16 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
   {%- include head.html -%}
+  <!-- The page supports only a dark color schemes -->
+  <meta name="color-scheme" content="dark">
 
-  <body class="d-flex flex-column vw-100 vh-100">
+  <body>
 
     {%- include header.html -%}
 
-    <main class="page-content py-5 flex-shrink-0" aria-label="Content">
-      <div class="container-fluid">
+    <main class="page-content flex-shrink-0" aria-label="Content">
+
+      <div class="container-fluid p-5">
       {{ content }}
       </div>
     </main>

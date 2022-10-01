@@ -1,14 +1,14 @@
-<footer class="footer mt-auto py-3 bg-light h-card">
+<footer class="footer mt-auto py-3 h-card">
     <data class="u-url" href="{{ "/" | relative_url }}"></data>
     <div class="container py-3">
       <div class="row">
         <div class="col text-center">
           <p>
-            <a class="btn btn-blue text-white" href="{{site.github.repository_url}}/blob/main/{{page.path}}?plain=1">
+            <a class="btn btn-primary text-white" href="{{site.github.repository_url}}/blob/main/{{page.path}}?plain=1">
               <i class="bi bi-pencil-square"></i>
               <span>Edit this page on Github</span>
             </a>
-            <a class="btn btn-outline btn-outline-red" href="{{site.github.repository_url}}/blob/main/{{page.path}}?plain=1">
+            <a class="btn btn-outline btn-outline-danger" href="{{site.github.repository_url}}/blob/main/{{page.path}}?plain=1">
               <i class="bi bi-flag-fill"></i>
               <span>Report an issue on Github</span>
             </a>
@@ -29,6 +29,8 @@
             {% endif -%}
           </ul>
 
+          <p>List of tools sourced from <a href="https://toolbox.researchops.community/">ResearchOps Community Toolbox</a> under Non-commercial ShareAlike 4.0 CC License</p>
+
           <hr class="my-5">
 
           <p>
@@ -42,6 +44,12 @@
             </a>
           </p>
           <p>{{ site.description | escape }}</p>
+          <form>
+            <div class="form-check form-switch tooltip-demo">
+              <label class="form-check-label" for="toggle-btn">Toggle light/dark mode:</label>
+              <input class="form-check-input" type="checkbox" id="toggle-btn" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Toggle Dark Mode or press [D] hot-key" data-bs-original-title="">
+            </div>
+          </form>    
         </div>
       </div>
     </div>

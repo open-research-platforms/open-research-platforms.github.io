@@ -2,72 +2,79 @@
 layout: default
 ---
 
-{{content}}
-<!-- hide purpose built filters, for now
-<div class="btn-group" role="group" aria-label="Basic outlined example">  
-  <button type="button" class="btn btn-outline-primary" data-filter="*">show all</button>
-  <button type="button" class="btn btn-outline-primary" data-filter=".purpose-built">purpose-built</button>
-</div>
--->
-<div class="btn-group" role="group" aria-label="Basic outlined example">  
-  <button type="button" class="btn btn-light text-primary" data-filter="*">All</button>
-  <button type="button" class="btn btn-light text-secondary" data-filter=".success">Open</button>
-  <button type="button" class="btn btn-light text-warning" data-filter=".warning">Partial</button>
-  <button type="button" class="btn btn-light text-danger" data-filter=".danger">Closed</button>
-  <button type="button" class="btn btn-light text-secondary" data-filter=".unknown">Unknown</button>
-</div>
 
-<hr>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="masonry" data-isotope='{ "itemSelector": ".col", "layoutMode": "masonry" }'>
-  {% for platform in site.platforms %}
-    <div class="col {% if platform.rating %}{{ platform.rating | downcase }}{% else %}unknown{% endif %}">
-      <div class="card mb-2">
-        <div class="card-body">
-            <h5>
-              <div class="d-flex">
-                <a class="text-decoration-none flex-grow-1" href="{{ platform.url }}">
-                  {% if platform.logo %}
-                    <img src="/assets/logos/{{ platform.logo }}" alt="Logo for {{ platform.name }}" width="24" height="24" class="d-inline-block align-text-top">                     
-                  {% endif %}
-                  {{ platform.name }}
-                </a>
-                {% if platform.rating %}
-                  <span class="badge bg-{{ platform.rating | downcase }}{% if platform.rating == "Warning" %} text-dark{% endif %}">{% if platform.rating == "Success" %}Open{% else %}{{ platform.rating }}{% endif %}</span>
-                {% else %}
-                <span class="badge bg-secondary }}">Unknown</span>
-              {% endif %}
-            </div>
-          </h5>
-          <p class="card-text">{{ platform.description | markdownify }}</p>
-          {% if platform.criteria %}
-            <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
-              {%- for criteria in platform.criteria -%}                
-                <small class="badge me-3 bg-{% if criteria.rating %}{{ criteria.rating | downcase }}{% else %}light text-secondary{% endif %} rounded-pill">{{ criteria.label }}</small>
-              {%- endfor -%}
-            </div>  
-          {% endif %}
-        </div>
-        <!--
-        {% if platform.links %}
-          <small class="card-header">
-            {%- for link in platform.links -%}
-              <a href="{{ link.url }}" class="card-link link-secondary">{{ link.label }}</a>
-            {% endfor %}
-          </small>
-        {% endif %}
-        -->
-      </div>
-    </div>
-  {% endfor %}
+  {{content}}
 
-  <div class="col">
-    <div class="card border border-2 mb-3" style="border-style: dashed!important;">
-      <div class="card-body">
-        <h5 class="mb-3">See something missing?</h5>
-        <a class="btn btn-outline-primary" href="https://github.com/open-research-platforms/open-research-platforms.github.io/issues/new?assignees=&labels=Platform&template=new_platform.yml&title=%5BPLATFORM%5D+%3Ctitle%3E"><i class="bi bi-github"></i> Add a Platform via Github</a>
-        <p class="text-secondary mt-3"><small>Note: Submission form requires a <a href="https://github.com/join" class="link-secondary">free Github account</a>.</small></p>
-      </div>
-    </div>
+<div class="container-fluid">
+
+  <!-- hide purpose built filters, for now
+  <div class="btn-group" role="group" aria-label="Basic outlined example">  
+    <button type="button" class="btn btn-outline-primary" data-filter="*">show all</button>
+    <button type="button" class="btn btn-outline-primary" data-filter=".purpose-built">purpose-built</button>
   </div>
-  
+  -->
+
+  <div class="btn-group" role="group" aria-label="Basic outlined example">  
+    <button type="button" class="btn btn-dark text-primary" data-filter="*">All</button>
+    <button type="button" class="btn btn-dark text-secondary" data-filter=".success">Open</button>
+    <button type="button" class="btn btn-dark text-warning" data-filter=".warning">Partial</button>
+    <button type="button" class="btn btn-dark text-danger" data-filter=".danger">Closed</button>
+    <button type="button" class="btn btn-dark text-secondary" data-filter=".unknown">Unknown</button>
+  </div>
+
+  <hr>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="masonry" data-isotope='{ "itemSelector": ".col", "layoutMode": "masonry" }'>
+    {% for platform in site.platforms %}
+      <div class="col {% if platform.rating %}{{ platform.rating | downcase }}{% else %}unknown{% endif %}">
+        <div class="card mb-2">
+          <div class="card-body">
+              <h5>
+                <div class="d-flex">
+                  <a class="text-decoration-none flex-grow-1 text" href="{{ platform.url }}">
+                    {% if platform.logo %}
+                      <img src="/assets/logos/{{ platform.logo }}" alt="Logo for {{ platform.name }}" width="24" height="24" class="d-inline-block align-text-top">                     
+                    {% endif %}
+                    {{ platform.name }}
+                  </a>
+                  {% if platform.rating %}
+                    <span class="badge bg-{{ platform.rating | downcase }}{% if platform.rating == "Warning" %} text-dark{% endif %}">{% if platform.rating == "Success" %}Open{% else %}{{ platform.rating }}{% endif %}</span>
+                  {% else %}
+                  <span class="badge bg-secondary }}">Unknown</span>
+                {% endif %}
+              </div>
+            </h5>
+            <p class="card-text">{{ platform.description | markdownify }}</p>
+            {% if platform.criteria %}
+              <div class="accordion accordion-flush" id="accordion{{ platform.name }}">
+                {%- for criteria in platform.criteria -%}                
+                  <small class="badge me-3 bg-{% if criteria.rating %}{{ criteria.rating | downcase }}{% else %}light text-secondary{% endif %} rounded-pill">{{ criteria.label }}</small>
+                {%- endfor -%}
+              </div>  
+            {% endif %}
+          </div>
+          <!--
+          {% if platform.links %}
+            <small class="card-header">
+              {%- for link in platform.links -%}
+                <a href="{{ link.url }}" class="card-link link-secondary">{{ link.label }}</a>
+              {% endfor %}
+            </small>
+          {% endif %}
+          -->
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="col">
+      <div class="card border border-secondary border-1 mb-3" style="border-style: dashed!important;">
+        <div class="card-body">
+          <h5 class="mb-3">See something missing?</h5>
+          <a class="btn btn-outline-primary" href="https://github.com/open-research-platforms/open-research-platforms.github.io/issues/new?assignees=&labels=Platform&template=new_platform.yml&title=%5BPLATFORM%5D+%3Ctitle%3E"><i class="bi bi-github"></i> Add a Platform via Github</a>
+          <p class="text-secondary mt-3"><small>Note: Submission form requires a <a href="https://github.com/join" class="link-secondary">free Github account</a>.</small></p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 </div>
