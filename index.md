@@ -1,6 +1,6 @@
 ---
 title: Platforms
-layout: cards
+layout: index
 ---
 <div class="jumbotron p-5">
     <h1 class="display-1"><strong class="fw-bold">Interoperable data</strong> is <br>the future of user&nbsp;research…</h1>
